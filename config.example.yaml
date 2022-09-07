@@ -1,0 +1,20 @@
+common:
+  broker: kafka.default.svc.cluster.local:9092
+
+count:
+
+  k8sNginxIngressLogRaw:
+    name: ingress            # Use this name to refer to this topic
+    path: kubernetes_cluster # break down the numbers by the string value at this jsonpath location
+
+  k8sEventLogRaw:
+    name: k8sevents
+    path: eventExporter.cluster
+
+  k8s_SystemLogRaw:
+    name: systemd
+    path: '["kubernetes.cluster"]'
+
+  k8sNginxModSecurityLogRaw:
+    name: modsec
+    countOnly: True # Only count the total events
