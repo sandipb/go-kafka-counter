@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  appbuild:
+    build:
+      dockerfile: Dockerfile.build
+      context: .
+    image: docker-build:centos7-go1.18.6
+    command: ["-c", "make"]
+    volumes:
+      - ./:/src

@@ -1,0 +1,18 @@
+FROM centos:7
+
+ARG GO_VERSION=1.18.6
+ARG UID=2000
+ARG USER=app
+
+RUN yum install -y wget librdkafka make gcc
+RUN wget -q https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz \
+    && tar xzf go${GO_VERSION}.linux-amd64.tar.gz \
+    && rm go${GO_VERSION}.linux-amd64.tar.gz \
+    && mv go /usr/local/ 
+RUN useradd -d /src -m -s /bin/bash -u ${UID} -U ${USER}
+
+ENV PATH "$PATH:/usr/local/go/bin"
+WORKDIR /src/
+USER ${USER}
+
+ENTRYPOINT [ "/bin/bash" ]

@@ -4,8 +4,10 @@ common:
 count:
 
   k8sNginxIngressLogRaw:
-    name: ingress            # Use this name to refer to this topic
-    path: kubernetes_cluster # break down the numbers by the string value at this jsonpath location
+    name: ingress            # Optionally, Use this name to refer to this topic
+    path: kubernetes_cluster # break down the numbers by the string value at this jmespath location
+                             # 
+                             # NOTE: either 'path' or 'countOnly' (shown below) have to be given
 
   k8sEventLogRaw:
     name: k8sevents

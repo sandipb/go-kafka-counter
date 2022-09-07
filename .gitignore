@@ -15,3 +15,8 @@
 # vendor/
 /kafka-count
 /config.yaml
+
+# consequence of using /src as the homedirectory
+/.cache
+/go
+/.bash_history
